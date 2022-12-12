@@ -57,7 +57,7 @@ def save():
         messagebox.showerror(title="⚠️Missing Inofrmation!⚠️", message="You did not fill out all the information")
     else:
         try:
-            with open("/Users/malihya/PycharmProjects/Udemy/password-manager/pw_data.json", "r") as data_file:
+            with open("pw_data.json", "r") as data_file:
                 # Reading old data
                 data = json.load(data_file)
                 # Updating old data with new data
@@ -65,7 +65,7 @@ def save():
         except FileNotFoundError:
             data = new_data
         finally:
-            with open("/Users/malihya/PycharmProjects/Udemy/password-manager/pw_data.json", "w") as data_file:
+            with open("pw_data.json", "w") as data_file:
                 # Saving updated data
                 json.dump(data, data_file, indent=4)
                 website_entry.delete(0, END)
@@ -75,7 +75,7 @@ def save():
 def find_password():
     website = website_entry.get()
     try:
-        with open("/Users/malihya/PycharmProjects/Udemy/password-manager/pw_data.json") as data_file:
+        with open("pw_data.json") as data_file:
             data = json.load(data_file)
     except FileNotFoundError:
         messagebox.showerror(title="Error", message=f"No Data Dile Found")
@@ -95,7 +95,7 @@ window.title("Password Manager")
 window.config(padx=20, pady=20)
 
 canvas = Canvas(width=200, height=200, highlightthickness=0)
-logo = PhotoImage(file="/Users/malihya/PycharmProjects/Udemy/password-manager/logo.png")
+logo = PhotoImage(file="logo.png")
 canvas.create_image(100, 100, image=logo)
 canvas.grid(column=1, row=0, columnspan=2)
 
